@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { SplashScreen, Stack } from 'expo-router'
-import { StatusBar } from 'expo-status-bar';
-import { useFonts } from 'expo-font';
-
+import React, { useEffect, useState } from "react";
+import { SplashScreen, Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import { useFonts } from "expo-font";
+import Toast from "react-native-toast-message";
 
 SplashScreen.preventAutoHideAsync();
 
 const Layout = () => {
   const [loaded] = useFonts({
-    "park-r": require('../assets/fonts/Parkinsans-Regular.ttf'),
-    "park-m": require('../assets/fonts/Parkinsans-Medium.ttf'),
-    "park-b": require('../assets/fonts/Parkinsans-Bold.ttf'),
-    "nb": require('../assets/fonts/Nunito-Bold.ttf'),
-    "nm": require('../assets/fonts/Nunito-Medium.ttf'),
-    "nr": require('../assets/fonts/Nunito-Regular.ttf'),
-    "nsb": require('../assets/fonts/Nunito-SemiBold.ttf'),
+    "park-r": require("../assets/fonts/Parkinsans-Regular.ttf"),
+    "park-m": require("../assets/fonts/Parkinsans-Medium.ttf"),
+    "park-b": require("../assets/fonts/Parkinsans-Bold.ttf"),
+    nb: require("../assets/fonts/Nunito-Bold.ttf"),
+    nm: require("../assets/fonts/Nunito-Medium.ttf"),
+    nr: require("../assets/fonts/Nunito-Regular.ttf"),
+    nsb: require("../assets/fonts/Nunito-SemiBold.ttf")
   });
   useEffect(() => {
     if (loaded) {
@@ -22,21 +22,34 @@ const Layout = () => {
     }
   }, [loaded]);
 
-  if(!loaded) return;
+  if (!loaded) return;
 
   return (
     <>
       <Stack>
-        <Stack.Screen name='index' options={{
-          headerShown: false
-        }}/>
-        <Stack.Screen name='(auth)' options={{
-          headerShown: false
-        }}/>
+        <Stack.Screen
+          name="index"
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
+          name="(auth)"
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
+          name="route"
+          options={{
+            headerShown: false
+          }}
+        />
       </Stack>
-      <StatusBar style='light'/>
+      <StatusBar style="light" />
+      <Toast visibilityTime={3000} />
     </>
-  )
-}
+  );
+};
 
 export default Layout;
